@@ -1,58 +1,58 @@
 # Exercise 1
-Transfer BTC to Ethereum (as a wrapped asset) and back via Axelar Network CLI.
+โอนย้าย $BTC ไปและกลับจาก Ethereum (เป็นการ wrap) โดยใช้ Axelar Network CLI
 
-## Level
-Intermediate
+## ระดับความยาก
+Intermediate (ปานกลาง)
 
 ## Disclaimer
 Axelar Network is a work in progress. At no point in time should you transfer any real assets using Axelar. Only use testnet tokens that you're not afraid to lose. Axelar is not responsible for any assets lost, frozen, or unrecoverable in any state or condition. If you find a problem, please submit an issue to this repository following the template.
 
-## Prerequisites
-- Complete all steps from `README.md`
-- Have a Ethereum wallet setup with [MEW](https://www.myetherwallet.com/) and have an Ethereum address funded with some Ether (You can also choose to use the [Chrome plugin](https://chrome.google.com/webstore/detail/mew-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en))
+## ข้อกำหนด
+- ผ่านทุกขั้นตอนจาก `README.md`
+- มี Ethereum wallet จาก [MEW](https://www.myetherwallet.com/) และเตรียม Ethereum address ที่มี $ETH อยู่บ้าง (สามารถใช้ปลั๊กอินนี้ได้ [Chrome plugin](https://chrome.google.com/webstore/detail/mew-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm?hl=en))
 
-## Useful links
+## ลิงค์ที่เป็นประโยชน์
 - Axelar faucet: http://faucet.testnet.axelar.network/
-- Latest docker images: https://hub.docker.com/repository/docker/axelarnet/axelar-core,
+- Docker images รุ่นล่าสุด: https://hub.docker.com/repository/docker/axelarnet/axelar-core,
   https://hub.docker.com/repository/docker/axelarnet/tofnd
-- Extra commands to query Axelar Network state: https://github.com/axelarnetwork/axelarate-community/blob/main/EXTRA%20COMMANDS.md
+- คำสั่งในการ query state ของ Axelar Network เพิ่มเติม: https://github.com/axelarnetwork/axelarate-community/blob/main/EXTRA%20COMMANDS.md
 
-## What you need
-- Bitcoin testnet faucet to send some test BTC: https://testnet-faucet.mempool.co/
+## สิ่งที่จะต้องใช้
+- Bitcoin testnet faucet เพื่อส่ง test BTC: https://testnet-faucet.mempool.co/
 - Metamask
-- Ethereum Ropsten address (generate via Metamask)
+- Ethereum Ropsten address (ผ่านทาง Metamask)
 
 
-## Joining the Axelar testnet
+## การเข้าร่วม the Axelar testnet
 
-Follow the instructions in `README.md` to make sure your node is up to date and you received some test coins to your validator account.
+ทำตามขั้นตอนใน `README.md` (หรือ `mrlp5776-README.md`) เพื่อให้แน่ใจว่า node ของเรามีข้อมูลเป็นปัจจุบัน และได้รับเหรียญทดสอบในบัญชีของ Validator
 
 ## Instructions to mint and burn tokens
 These instructions are a step by step guide to run commands to move an asset from a source to a destination chain and back. The assets are minted as wrapped ERC-20 assets on the destination chain. The commands are submitted to the Axelar Network that's responsible for (a) generating deposit/withdrawal addresses, (b) routing and finalizing transactions, and (c) minting/burning the corresponding assets.
 
 To perform these tests, you'll need some test Bitcoins on the Bitcoin testnet, and a destination Ethereum address on the Ethereum Ropsten Testnet.
 
-### Mint ERC20 Bitcoin tokens on Ethereum
+### ทำการ Mint เหรียญ ERC20 Bitcoin บน Ethereum
 
-1. Create a deposit address on Bitcoin (to which you'll deposit coins later)
+1. สร้างบัญชีเงินฝากบน Bitcoin (ไว้สำหรับฝากเงินเข้ามาภายหลัง)
 
   ```
   axelard tx bitcoin link ethereum {ethereum Ropsten dst addr} --from validator -y -b block
 -> returns deposit address
   ```
 
-  e.g.,
+  เช่น
 
   ```
   axelard tx bitcoin link ethereum 0xc1c0c8D2131cC866834C6382096EaDFEf1af2F52 --from validator -y -b block
   ```
 
-  Look for `successfully linked {bitcoin deposit address} and {ethereum Ropsten dst addr}`
+  ให้หา out put ประมาณนี้ `successfully linked {bitcoin deposit address} and {ethereum Ropsten dst addr}`
 
-2. External: send a TEST BTC on Bitcoin testnet to the deposit address specific above, and wait for 6 confirmations (i.e. the transaction is 6 blocks deep in the Bitcoin chain).
-  - ALERT: DO NOT SEND ANY REAL ASSETS
-  - You can use a bitcoin faucet such as https://bitcoinfaucet.uo1.net/ to send TEST BTC to the deposit address
-  - You can monitor the status of your deposit using the testnet explorer: https://blockstream.info/testnet/
+2. สิ่งภายนอก: ส่ง TEST $BTC บน Bitcoin testnet ไปที่บัญชีเงินฝาก Bitcoin ที่ได้จากข้างบนนี้, และรอการยืนยัน 6 ครั้ง (เช่น transaction is 6 blocks deep in the Bitcoin chain)
+  - คำเตือน: ห้ามส่งทรัพย์สินจริงในขั้นตอนพวกนี้
+  - สามารถใช้ bitcoin faucet อย่างเช่น https://bitcoinfaucet.uo1.net/ เพื่อส่ง TEST BTC ไปยังบัญชีเงินฝากที่เราสร้างขึ้นมา
+  - ตรวจสอบสถานะของการฝากเงินโดยใช้ testnet explorer: https://blockstream.info/testnet/
 
 
 3. Confirm the Bitcoin outpoint
