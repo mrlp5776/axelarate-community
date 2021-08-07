@@ -86,7 +86,7 @@ Axelar Network is a work in progress. At no point in time should you transfer an
 
   เราสามารถค้นหาได้ด้วย `docker logs -f axelar-core 2>&1 | grep -a -e command`.
 
-5. ให้ command data ที่จะต้องส่งไปใน Ethereum transaction เพื่อที่จะ execute the mint (ให้สร้างเหรียญมาใหม่)
+5. รับ command data ที่จะต้องใช้ต้องส่งไปใน Ethereum transaction เพื่อที่จะ execute การ mint (ให้สร้างเหรียญมาใหม่)
   ```
   axelard q evm command ethereum {commandID}
   ```
@@ -98,10 +98,10 @@ Axelar Network is a work in progress. At no point in time should you transfer an
   ```
   ก็จะได้ command data เป็น output
 
-6. ส่ง Ethereum transaction ที่ wrap กับ command data เพิ่งสั่งให้สร้างเหรียญ
+6. ส่ง Ethereum transaction ที่ wrap กับ command data เพื่อสั่งให้สร้างเหรียญ
 
 เปิด Metamask wallet ไปที่ Setting > Advanced แล้วก็เปิดใช้งานหัวข้อ Show HEX data ซึ่งจะทำให้เราสามารถส่งข้อมูล transaction ได้โดยตรงผ่าน Metamask wallet
-อย่าลืมว่าไม่ต้องทำการโอนเหรียญใด ๆ เราแค่ต้องการข้อมูล input มาจากขั้นตอนของ `commandID` ด้านบน และส่งไปที่ Gateway smart contract (ดูได้จาก [ที่นี่](https://github.com/axelarnetwork/axelarate-community/blob/main/TESTNET%20RELEASE.md)) ขณะที่ทำขั้นตอนนี้ตรวจดูให้แน่ใจถึงค่า gas ใน Metamask ให้อัพเดทใหม่เมื่อทำการคัดลอก command data มาวาง
+อย่าลืมว่าไม่ต้องทำการโอนเหรียญใด ๆ เราแค่ต้องการข้อมูลที่เป็น input มาจากขั้นตอนของ `commandID` ด้านบน และส่งไปที่ Gateway smart contract (ดูได้จาก [ที่นี่](https://github.com/axelarnetwork/axelarate-community/blob/main/TESTNET%20RELEASE.md)) ขณะที่ทำขั้นตอนนี้ตรวจดูให้แน่ใจถึงค่า gas ใน Metamask ให้อัพเดทใหม่แล้วจึงทำการคัดลอก command data มาวาง
 
 <img alt="MM" src="https://user-images.githubusercontent.com/87255624/128593622-36013986-af89-4643-9e62-55995ac741b0.png">
 
