@@ -72,7 +72,7 @@ List บัญชี C2D2's:
 c2d2cli bridge evm accounts list ethereum
 ```
 
-บัญชีขึ้นต้น Account `0` (address แรกใน list) จะถูกใช้เพื่อส่ง transactions ให้ไปที่ [https://faucet.ropsten.be/](https://faucet.ropsten.be/) เพื่อรับ Ropsten ETH สำหรับบัญชีของ sender
+บัญชีขึ้นต้นด้วย `0` (ใช้ address แรกใน list) จะถูกใช้เพื่อส่ง transactions ให้ไปที่ [https://faucet.ropsten.be/](https://faucet.ropsten.be/) เพื่อรับ Ropsten ETH สำหรับบัญชีของ sender
 
 ### Mint ERC20 Bitcoin tokens บน Ethereum
 1. Generate a Bitcoin deposit address. The Ethereum address you provide will be linked to the deposit address and receive the pegged bitcoin (Satoshi tokens) on the Ethereum testnet. 
