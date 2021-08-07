@@ -111,7 +111,7 @@ Axelar Network is a work in progress. At no point in time should you transfer an
 
 (หมายเหตุไว้ว่าตรง "To Address" จะเป็น address ของ Axelar Gateway smart contract, ซึ่งหาได้จาก [ที่นี่](https://github.com/axelarnetwork/axelarate-community/blob/main/TESTNET%20RELEASE.md), จากนั้นให้ "Add Data" ด้วย command data ที่ได้มาจากขั้นตอนก่อนหน้า)
 
-ตอนนี้เราก็จะเปิด Metamask เลือก "Assets" จากนั้น "Add Token" จากนั้น "Custom Token" และวาง token contract address ลงไป (ดูที่ `axelarate-community/TESTNET RELEASE.md` และค้นหาตรง `Ethereum token contract address`).
+ตอนนี้เราก็จะเปิด Metamask เลือก "Assets" จากนั้น "Add Token" จากนั้น "Custom Token" และวาง token contract address ลงไป (ดูที่ `axelarate-community/TESTNET RELEASE.md` และค้นหาตรง `Ethereum token contract address`) เราก็จะพบว่ามี satoshi ถูก mint มาใน Ethereum address ของเราเท่ากับจำนวนที่ฝากเข้ามาจาก test Bitcoin ในตอนแรก
 
 ### การ burn เหรียญ ERC20 wrapped Bitcoin และรับ native Satoshi
 
