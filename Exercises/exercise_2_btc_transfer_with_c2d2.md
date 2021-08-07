@@ -1,81 +1,80 @@
 # Exercise 2
-Transfer BTC to Ethereum (as a wrapped asset) and back using `c2d2cli`.
+โอน BTC ไป Ethereum (ด้วยการ wrapped asset) และโอนกลับ โดยใช้ `c2d2cli`
 
-C2D2 is the axelar cross-chain dapp deamon which coordinates the necessary transactions for cross-chain asset transfers.
-The C2D2 CLI automates the steps we performed manually in exercise 1.
+C2D2 คือ axelar cross-chain dapp deamon ซึ่งทำงานร่วมกับ transactions ที่จำเป็นสำหรับการโอน asset แบบ cross-chain
+C2D2 CLI นี้จะทำขั้นตอนต่าง ๆ แบบอัตโนมัติ ดังที่เราทำแต่ละขั้นตอนเองมาแล้วใน in exercise 1.
 
-## Status
-Work in progress. 
+## สถานะ
+ระหว่างดำเนินการ 
 
-## Level 
-Intermediate
+## ระดับความยาก
+ปานกลาง
 
 ## Disclaimer 
 Axelar Network is a work in progress. At no point in time should you transfer any real assets using Axelar. Only use testnet tokens that you're not afraid to lose. Axelar is not responsible for any assets lost, frozen, or unrecoverable in any state or condition. If you find a problem, please submit an issue to this repository following the template. 
 
-## Prerequisites
-- Complete all steps from `README.md`
+## สิ่งที่ต้องมี
+- ทำทุกขั้นตอนใน `README.md` สำเร็จแล้ว
 
-## Useful links
-- Extra commands to query Axelar Network state: https://github.com/axelarnetwork/axelarate-community/blob/main/EXTRA%20COMMANDS.md
+## links ที่เป็นประโยชน์
+- commands เพิ่มเติมเพื่อ query สถานะ Axelar Network: https://github.com/axelarnetwork/axelarate-community/blob/main/EXTRA%20COMMANDS.md
 
-## What you need
-- Bitcoin testnet wallet with some tBTC (faucet [https://testnet-faucet.mempool.co/](https://testnet-faucet.mempool.co/))
-- Ethereum wallet on the Ropsten network (we reccomend Metamask)
-- Some Ropsten ETH (faucet [https://faucet.ropsten.be/](https://faucet.ropsten.be/) or [https://faucet.dimensions.network/](https://faucet.dimensions.network/))
+## สิ่งที่คุณจำเป็นต้องมี
+- Bitcoin testnet wallet พร้อมด้วย tBTC เล็กน้อย (faucet [https://testnet-faucet.mempool.co/](https://testnet-faucet.mempool.co/))
+- Ethereum wallet บน the Ropsten network (แนะนำให้ใช้ Metamask)
+- Ropsten ETH เล็กน้อย (faucet [https://faucet.ropsten.be/](https://faucet.ropsten.be/) หรือ [https://faucet.dimensions.network/](https://faucet.dimensions.network/))
 
-## Joining the Axelar testnet
+## การเข้าร่วม Axelar testnet
 
-Follow the instructions in `README.md` to make sure your node is synchronized to the latest block, and you have received some test coins to your validator account. 
+ทำตามขั้นตอนต่าง ๆ ใน `README.md` เพื่อให้มั่นใจว่า node ได้มีการ synchronized ถึง block ล่าสุดแล้ว, และเราได้รับเหรียญทดสอบมาจำนวนหนึ่งในบัญชี validator ของเรา
 
-### Pull and enter the `c2d2cli` container
-Check [TESTNET RELEASE.md](../TESTNET%20RELEASE.md) for the latest available C2D2 version of the docker images.
+### Pull และ enter คำสั่ง `c2d2cli` container
+ตรวจดู [TESTNET RELEASE.md](../TESTNET%20RELEASE.md) สำหรับ C2D2 version ที่ใช้งานล่าสุด ของ docker images.
 
-On a new terminal window, enter the `c2d2cli` container by running:
+บน terminal window อันใหม่, ให้เข้าสู่ `c2d2cli` โดยใช้คำสั่ง:
 ```
-./c2d2/c2d2cli.sh --version VERSION
+./c2d2/c2d2cli.sh --version VERSION (Format: vX.Y.Z)
 ```
 
-### Generate a key on Axelar and get some test tokens
+### สร้าง key บน Axelar และรับ test tokens จำนวนหนึ่งมา
 
-Create c2d2's Axelar blockchain account
+สร้างบัญชี c2d2's Axelar blockchain
 ```
 c2d2cli keys add c2d2
 ```
 
-Go to axelar faucet and fund your C2D2 account by providing the address to the
-facuet (http://faucet.testnet.axelar.network/). You can get c2d2's account
-address by running 
+ไปที่ faucet และเติมเงินลงใน C2D2 account ของเราโดยการใช้ address ที่ the
+facuet (http://faucet.testnet.axelar.network/). เราสามารถรับ address ของบัญชี c2d2
+ด้วยการใช้คำสั่ง 
 
 ```shell
 c2d2cli keys show c2d2 -a
 ```
 
-### Fund your ethereum sender account
-Add an ethereum account to c2d2cli. When prompted enter the password `passwordpassword`.
+### เติมเงินในบัญชี ethereum sender
+เพิ่มบัญชี ethereum ไปใน c2d2cli. เมื่อได้รับแจ้งให้ใส่ password `passwordpassword`.
 ```shell
 c2d2cli bridge evm accounts add ethereum 
 ```
 
-You will be asked to enter a password for the account. Make a note of your password.
+เราจะถูกถามให้กรอก password สำหรับบัญชีนี้ จดบันทึก password ของเราด้วย
 
 
+ถ้าเราใช้ password ต่างจากนี้้ `passwordpassword` เราก็จะต้องทำอย่างใดอย่างหนึ่งนี้:
+1. กรอก password ด้วยตัวเองระหว่างขั้นตอนการ transfer 
+2. **หรือ** ให้ password ของเราในแต่ละคำสั่ง `c2d2cli` โดยการเพิ่ม flag `--evm-passphrase YOUR_PASSWORD`
+3. **หรือ** แก้ไข password ที่ไฟล์ `/root/.c2d2cli/config.toml`
+   - เปลี่ยนค่าใน `sender-passphrase=` key ไปยัง password ของเรา
 
-If you used a different password than `passwordpassword` you will need to either:
-1. enter your password manually during the transfer procedure
-2. **Or** provide your password to each `c2d2cli` command by adding the flag `--evm-passphrase YOUR_PASSWORD`
-3. **Or** configure your password by editing the `/root/.c2d2cli/config.toml` file.
-   - Change the value in the `sender-passphrase=` key to your password.
-
-List C2D2's accounts:
+List บัญชี C2D2's:
 
 ```
 c2d2cli bridge evm accounts list ethereum
 ```
 
-Account index `0` (the first address in the list) will be used to send transactions. Go to [https://faucet.ropsten.be/](https://faucet.ropsten.be/) to get some Ropsten ETH for the sender account.
+บัญชีขึ้นต้น Account `0` (address แรกใน list) จะถูกใช้เพื่อส่ง transactions ให้ไปที่ [https://faucet.ropsten.be/](https://faucet.ropsten.be/) เพื่อรับ Ropsten ETH สำหรับบัญชีของ sender
 
-### Mint ERC20 Bitcoin tokens on Ethereum
+### Mint ERC20 Bitcoin tokens บน Ethereum
 1. Generate a Bitcoin deposit address. The Ethereum address you provide will be linked to the deposit address and receive the pegged bitcoin (Satoshi tokens) on the Ethereum testnet. 
 
    ```
