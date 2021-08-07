@@ -25,7 +25,7 @@ Axelar Network is a work in progress. At no point in time should you transfer an
 
 ## การเข้าร่วม the Axelar testnet
 
-ทำตามขั้นตอนใน `README.md` (`mrlp5776/axelarate-community`) เพื่อให้แน่ใจว่า node ของเรามีข้อมูลเป็นปัจจุบัน และได้รับเหรียญทดสอบในบัญชีของ Validator
+ทำตามขั้นตอนใน `README.md` (`ภาษาไทยไปที่ mrlp5776/axelarate-community` แต่การ clone ให้ใช้จาก axelarnetwork/axelarate-community) เพื่อให้แน่ใจว่า node ของเรามีข้อมูลเป็นปัจจุบัน และได้รับเหรียญทดสอบในบัญชีของ Validator
 
 ## การออกคำสั่งเพื่อ mint และ burn tokens
 คำสั่งเหล่านี้เป็นวิธีการทีละขั้นตอน เพื่อที่จะใช้คำสั่งในการย้าย asset จาก  source ไปยัง chain ปลายทาง และก็ย้ายกลับ assets ถูก minted โดยเป็นการ wrapped ของ ERC-20 assets ไปอยู่บน chain ปลายทาง หรือ destination chain คำสั่งจะถูก submitted ไปที่ Axelar Network โดยจะรับผิดชอบในส่วนของ (a) สร้าง address สำหรับการฝาก/ถอน (b) กำหนดเส้นทาง และการปิด transactions และ (c) การทำการ mint/burn กับ assets ที่สัมพันธ์กัน
@@ -102,6 +102,7 @@ Axelar Network is a work in progress. At no point in time should you transfer an
 
 เปิด Metamask wallet ไปที่ Setting > Advanced แล้วก็เปิดใช้งานหัวข้อ Show HEX data ซึ่งจะทำให้เราสามารถส่งข้อมูล transaction ได้โดยตรงผ่าน Metamask wallet
 อย่าลืมว่าไม่ต้องทำการโอนเหรียญใด ๆ เราแค่ต้องการข้อมูล input มาจากขั้นตอนของ `commandID` ด้านบน และส่งไปที่ Gateway smart contract (ดูได้จาก [ที่นี่](https://github.com/axelarnetwork/axelarate-community/blob/main/TESTNET%20RELEASE.md)) ขณะที่ทำขั้นตอนนี้ตรวจดูให้แน่ใจถึงค่า gas ใน Metamask ให้อัพเดทใหม่เมื่อทำการคัดลอก command data มาวาง
+
 <img alt="MM" src="https://user-images.githubusercontent.com/87255624/128593622-36013986-af89-4643-9e62-55995ac741b0.png">
 
 อีกวิธีนึง เราสามารถใช้ MEW wallet และไปที่หน้า "Send Transaction" เปิดตรง advanced options ด้วย ตอนนี้ก็จะต้องส่ง transaction ไปยัง Gateway smart contract ด้วย **0** Ether พร้อมทั้งช่อง data ก็ใส่ commad data ที่เราเรียกมันจากขั้นตอนก่อนหน้านี้ หน้าจอของเราก็ควรดูคล้าย ๆ กับด้านล่างนี้ คือเราเพียงแค่ส่ง transaction เพื่อสั่งให้ mint เหรียญของเรา 
