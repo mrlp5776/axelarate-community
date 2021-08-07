@@ -28,7 +28,7 @@ Axelar Network is a work in progress. At no point in time should you transfer an
 ทำตามขั้นตอนใน `README.md` (`ภาษาไทยไปที่ mrlp5776/axelarate-community` แต่การ clone ให้ใช้จาก axelarnetwork/axelarate-community) เพื่อให้แน่ใจว่า node ของเรามีข้อมูลเป็นปัจจุบัน และได้รับเหรียญทดสอบในบัญชีของ Validator
 
 ## การออกคำสั่งเพื่อ mint และ burn tokens
-คำสั่งเหล่านี้เป็นวิธีการทีละขั้นตอน เพื่อที่จะใช้คำสั่งในการย้าย asset จาก  source ไปยัง chain ปลายทาง และก็ย้ายกลับ assets ถูก minted โดยเป็นการ wrapped ของ ERC-20 assets ไปอยู่บน chain ปลายทาง หรือ destination chain คำสั่งจะถูก submitted ไปที่ Axelar Network โดยจะรับผิดชอบในส่วนของ (a) สร้าง address สำหรับการฝาก/ถอน (b) กำหนดเส้นทาง และการปิด transactions และ (c) การทำการ mint/burn กับ assets ที่สัมพันธ์กัน
+คำสั่งเหล่านี้เป็นวิธีการทีละขั้นตอน เพื่อที่จะใช้คำสั่งในการย้าย asset จาก source ไปยัง chain ปลายทาง และก็ย้ายกลับ ซึ่ง assets จะถูก minted โดยการ wrapped ของ ERC-20 assets ไปอยู่บน chain ปลายทาง หรือ destination chain โดยที่คำสั่งจะถูก submitted ไปที่ Axelar Network ที่ซึ่งรับผิดชอบในส่วนของ (a) สร้าง address สำหรับการฝาก/ถอน (b) กำหนดเส้นทาง และการปิด transactions และ (c) การทำการ mint/burn กับ assets ที่สัมพันธ์กัน
 
 ในการทำการทดสอบนี้ เราจำเป็นจะต้องมี test Bitcoins อยู่บน Bitcoin testnet บ้าง และที่ address ปลายทางของ Ethereum บน Ethereum Ropsten Testnet ด้วยเช่นกัน
 
